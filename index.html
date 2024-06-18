@@ -87,14 +87,14 @@
         // Function to format data
         function formatData(value, key) {
             // Example: Format dates, numbers, or custom transformations
-            if (key.toLowerCase().includes('Datum')) {
-                // Format date (assuming the date is in YYYY-MM-DD format)
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                return new Date(value).toLocaleDateString(undefined, options);
-            }
-            if (key.toLowerCase().includes('amount')) {
-                // Format number as currency
-                return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+            // Example: Format dates, numbers, or custom transformations
+            if (key === 'Datum') {
+                console.log([key, value]);
+                const parts = value.split("/"); // Split date string by "/"
+                const day = parts[1]; // Extract day
+                const month = parts[0]; // Extract month
+                // Format day.month
+                return `${day}.${month}`;
             }
             // Add more formatting rules as needed
             return value;
